@@ -8,6 +8,8 @@
 
 ```bash
 npm install --save voltage-breadcrumbs
+# OR
+yarn add voltage-breadcrumbs
 ```
 
 ## Usage
@@ -15,12 +17,12 @@ npm install --save voltage-breadcrumbs
 ```tsx
 import * as React from 'react'
 
-import MyComponent from 'voltage-breadcrumbs'
+import Breadcrumbs from 'voltage-breadcrumbs'
 
 class Example extends React.Component {
   render () {
     return (
-      <MyComponent />
+      <Breadcrumbs />
     )
   }
 }
