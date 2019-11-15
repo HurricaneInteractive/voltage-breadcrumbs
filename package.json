@@ -22,7 +22,6 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
