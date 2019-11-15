@@ -10,7 +10,7 @@ type linkDefinition = BreadcrumbLinkProps[]|ReactElement[]
 
 export type BreadcrumbProps = {
   links: linkDefinition
-  separator: string|null
+  separator: string|null|ReactElement
 }
 
 const Breadcrumbs = ({ links, separator = "/" }: BreadcrumbProps): ReactElement => {
@@ -23,7 +23,7 @@ const Breadcrumbs = ({ links, separator = "/" }: BreadcrumbProps): ReactElement 
   }
 
   const isLastIterator = (i: number): boolean => i === topLevelLinks.length - 1
-  const renderSeperator = (): ReactElement => <span>{separator}</span>
+  const renderSeperator = (): ReactElement => <span className="seperator">{separator}</span>
 
   const renderDropdownLinks = (): ReactElement => {
     return dropdownLinks ? (
