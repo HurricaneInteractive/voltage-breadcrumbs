@@ -1,67 +1,71 @@
-/**
- * @class ExampleComponent
- */
-
-import React, { ReactElement, AnchorHTMLAttributes } from 'react'
+import React, { ReactElement } from 'react'
 
 import styles from './styles.css'
 
-export interface BreadcrumbLink extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  link: string
-  text: string
-}
+import {
+  BreadcrumbLinkProps, BreadcrumbLink
+} from "./atoms"
 
-type LinkOrReactElement = BreadcrumbLink
+type linkDefinition = BreadcrumbLinkProps[]|ReactElement[]
 
 export type BreadcrumbProps = {
-  links: Array<LinkOrReactElement>
+  links: linkDefinition
   separator: string|null
 }
 
-const BreadcrumbLink = ({ link, text, ...props }: BreadcrumbLink): ReactElement => (
-  <a href={link} {...props}>{text}</a>
-)
-
 const Breadcrumbs = ({ links, separator = "/" }: BreadcrumbProps): ReactElement => {
+  let dropdownLinks: linkDefinition|null = null;
+  let topLevelLinks: linkDefinition = links;
 
-  const isLastIterator = (i: number): boolean => {
-    return i === links.length - 1;
+  if (links.length > 3) {
+    dropdownLinks = links;
+    topLevelLinks = dropdownLinks.splice(dropdownLinks.length - 3);
   }
 
-  const breadcrumbLinkClassName = (i: number): string => {
-    const classes = []
-    isLastIterator(i) && classes.push(styles["voltage__breadcrumbs__link--active"])
-    !isLastIterator(i) && classes.push(styles["voltage__breadcrumbs__link--truncate"])
+  const isLastIterator = (i: number): boolean => i === topLevelLinks.length - 1
+  const renderSeperator = (): ReactElement => <span>{separator}</span>
 
-    return classes.join(" ").trim()
+  const renderDropdownLinks = (): ReactElement => {
+    return dropdownLinks ? (
+      <li className={styles.voltage__breadcrumbs__dropdown}>
+        <a href="#">...</a>
+        { separator && renderSeperator() }
+      </li>
+    ) : <></>
+  }
+
+  const renderBreadcrumbListElem = (Component: ReactElement, key: number): ReactElement => (
+    <li key={key}>
+      {Component}
+      { (!isLastIterator(key) && separator) && renderSeperator() }
+    </li>
+  )
+
+  const renderBreadcrumbsLinks = (): ReactElement => {
+    let elements: ReactElement[] = []
+
+    topLevelLinks.forEach((link: BreadcrumbLinkProps|ReactElement, i: number): void => {
+      elements.push(
+        renderBreadcrumbListElem(
+          React.isValidElement(link) ? (
+            link
+          ) : (
+            <BreadcrumbLink link={link.link} text={link.text} />
+          ),
+          i
+        )
+      )
+    })
+
+    return <>{elements}</>
   }
 
   return (
     <nav className={`voltage__breadcrumbs`}>
-      {
-        links && (
-          <ul className={styles.voltage__breadcrumbs}>
-            {
-              links.map((link, i): ReactElement => (
-                link ? (
-                  <li key={i}>
-                    <BreadcrumbLink
-                      link={link.link}
-                      text={link.text}
-                      className={breadcrumbLinkClassName(i)}
-                    />
-                    {
-                      !isLastIterator(i) && separator ? <span>{separator}</span> : ""
-                    }
-                  </li>
-                ) : (
-                  <></>
-                )
-              ))
-            }
-          </ul>
-        )
-      }
+      <ul className={styles.voltage__breadcrumbs}>
+        { renderDropdownLinks() }
+        { renderBreadcrumbsLinks() }
+      </ul>
     </nav>
   )
 }
