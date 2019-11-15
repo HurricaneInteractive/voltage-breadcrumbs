@@ -50,7 +50,7 @@ const Breadcrumbs = ({ links, separator = "/" }: BreadcrumbProps): ReactElement 
           React.isValidElement(link) ? (
             link
           ) : (
-            <BreadcrumbLink link={link.link} text={link.text} />
+            <BreadcrumbLink {...link} />
           ),
           i
         )
