@@ -1,3 +1,42 @@
 .voltage__breadcrumbs {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
+.voltage__breadcrumbs li:first-child a {
+  margin-left: 0;
+}
+
+.voltage__breadcrumbs li:last-child a {
+  margin-right: 0;
+}
+
+.voltage__breadcrumbs a
+.voltage__breadcrumbs span {
+  display: inline-block;
+}
+
+.voltage__breadcrumbs a {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  margin: 0 10px;
+}
+
+.voltage__breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.voltage__breadcrumbs .voltage__breadcrumbs__link--active {
+  font-weight: bold;
+}
+
+.voltage__breadcrumbs .voltage__breadcrumbs__link--truncate {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
