@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'voltage-breadcrumbs'
+import Breadcrumbs from 'voltage-breadcrumbs'
+
+const links = [
+  { link: "http://google.com", text: "Home" },
+  { link: "http://google.com", text: "Account information" },
+  { link: "http://google.com", text: "Security details" },
+]
 
 export default class App extends Component {
   render () {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        <Breadcrumbs links={links} />
       </div>
     )
   }
