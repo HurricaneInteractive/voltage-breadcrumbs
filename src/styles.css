@@ -13,9 +13,10 @@
   margin-right: 0;
 }
 
-.voltage__breadcrumbs a
+.voltage__breadcrumbs a,
 .voltage__breadcrumbs span {
   display: inline-block;
+  vertical-align: middle;
 }
 
 .voltage__breadcrumbs a {
@@ -30,13 +31,17 @@
   text-decoration: underline;
 }
 
-.voltage__breadcrumbs .voltage__breadcrumbs__link--active {
+.voltage__breadcrumbs > li:last-child a {
   font-weight: bold;
 }
 
-.voltage__breadcrumbs .voltage__breadcrumbs__link--truncate {
+.voltage__breadcrumbs > li:not(:last-child):not(.voltage__breadcrumbs__dropdown) a {
   max-width: 150px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.voltage__breadcrumbs__dropdown {
+
 }
