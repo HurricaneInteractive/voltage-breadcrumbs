@@ -20,6 +20,8 @@ const Link = ({ text }) => (
   <a href="#">{text}</a>
 )
 
+const Seperator = () => (<span>S</span>)
+
 const customLinks = [
   <Link text="Account information" />,
   <Link text="Security details" />,
@@ -38,6 +40,9 @@ export default class App extends Component {
         </div>
         <div style={{ marginTop: "20px" }}>
           <Breadcrumbs links={customLinks} />
+        </div>
+        <div style={{ marginTop: "20px" }}>
+          <Breadcrumbs links={customLinks} separator={<Seperator />} />
         </div>
       </Fragment>
     )
