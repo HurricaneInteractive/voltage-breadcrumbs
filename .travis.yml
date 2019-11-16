@@ -1,19 +1,15 @@
 os: linux
-
 language: node_js
-
 node_js:
   - 10
-
-jobs:
-  include:
-    # Define the release stage that runs semantic-release
-    - stage: release
-      node_js: lts/*
-      # Advanced: optionally overwrite your default `script` step to skip the tests
-      # script: skip
-      deploy:
-        provider: script
-        cleanup: false
-        script:
-          - npx semantic-release
+script:
+  - yarn test
+before_deploy:
+  - yarn prepare
+deploy:
+  provider: npm
+  email: $NPM_EMAIL
+  api_key: $NPM_TOKEN
+  skip_cleanup: true
+  on:
+    branch: release
