@@ -20,7 +20,8 @@
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "commit": "git-cz"
   },
   "dependencies": {
     "react": "^16.12.0",
@@ -28,13 +29,17 @@
   },
   "peerDependencies": {},
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "@svgr/rollup": "^4.3.3",
     "@types/jest": "^24.0.23",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "commitizen": "^4.0.3",
     "cross-env": "^6.0.3",
+    "cz-conventional-changelog": "^3.0.2",
     "gh-pages": "^2.1.1",
     "react-scripts-ts": "^3.1.0",
     "rollup": "^1.27.0",
@@ -45,10 +50,20 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-typescript2": "^0.25.2",
     "rollup-plugin-url": "^3.0.0",
-    "typescript": "^3.7.2",
-    "semantic-release": "^15.13.30"
+    "semantic-release": "^15.13.30",
+    "typescript": "^3.7.2"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  }
 }
