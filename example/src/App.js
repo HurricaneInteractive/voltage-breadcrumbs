@@ -17,7 +17,7 @@ const moreLinks = [
 ]
 
 const Link = ({ text }) => (
-  <a href="#">{text}</a>
+  <a href="http://google.com">{text}</a>
 )
 
 const Seperator = () => (<span>S</span>)
