@@ -12,5 +12,6 @@ jobs:
         provider: npm
         cleanup: false
         edge: true
+        api_token: $NPM_TOKEN
         on:
           branch: release
