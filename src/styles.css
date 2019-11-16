@@ -43,5 +43,31 @@
 }
 
 .voltage__breadcrumbs__dropdown {
+  position: relative;
+  z-index: 2;
+}
+.voltage__breadcrumbs__dropdown > ul {
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+  background-color: white;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+  border-radius: 4px;
+  max-width: 300px;
+  width: 100vw;
+}
 
+.voltage__breadcrumbs__dropdown > ul a {
+  display: block;
+  padding: 8px 5px;
+  border-radius: 4px;
+  margin: 0;
+  margin-bottom: 3px;
+}
+
+.voltage__breadcrumbs__dropdown > ul a:hover {
+  background-color: #f4f4f4;
 }
