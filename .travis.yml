@@ -10,8 +10,7 @@ jobs:
         yarn build
       deploy:
         provider: npm
-        email: $NPM_EMAIL
-        api_key: $NPM_TOKEN
         cleanup: false
+        edge: true
         on:
           branch: release
