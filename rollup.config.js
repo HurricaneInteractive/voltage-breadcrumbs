@@ -38,9 +38,5 @@ export default {
       clean: true
     }),
     commonjs()
-  ],
-  external: ['react', 'prop-types'],
-  globals: {
-    react: 'React'
-  }
+  ]
 }

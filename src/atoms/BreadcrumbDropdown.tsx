@@ -1,22 +1,33 @@
-import React, { ReactElement, useState } from "react"
+import React from "react"
 
 import BreadcrumbList from "./BreadcrumbList"
 import { BreadcrumbDropdownProps } from "../types"
 
-const BreadcrumbDropdown = ({links}: BreadcrumbDropdownProps): ReactElement => {
-  const [active, setActive] = useState(false)
+class BreadcrumbDropdown extends React.Component<BreadcrumbDropdownProps, { active: boolean }> {
+  constructor(props: BreadcrumbDropdownProps) {
+    super(props)
+    this.state = {
+      active: false
+    }
+  }
 
-  return (
-    <>
-      <a href="#" onClick={(e) => {
-        e.preventDefault()
-        setActive(!active)
-      }}>...</a>
-      <ul style={{ display: `${active ? 'block' : 'none'}` }}>
-        <BreadcrumbList links={links} shouldRenderSeperator={false} />
-      </ul>
-    </>
-  )
+  setActive = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    this.setState({
+      active: !this.state.active
+    })
+  }
+
+  render = () => {
+    return (
+      <>
+        <a href="#" onClick={(e) => this.setActive(e)}>...</a>
+        <ul style={{ display: `${this.state.active ? 'block' : 'none'}` }}>
+          <BreadcrumbList links={this.props.links} shouldRenderSeperator={false} />
+        </ul>
+      </>
+    )
+  }
 }
 
 export default BreadcrumbDropdown
