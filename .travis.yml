@@ -10,8 +10,8 @@ jobs:
         yarn build
       deploy:
         provider: npm
-        email: "$NPM_EMAIL"
-        api_key: "$NPM_TOKEN"
-        skip_cleanup: true
+        email: $NPM_EMAIL
+        api_key: $NPM_TOKEN
+        cleanup: false
         on:
           branch: release
