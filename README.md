@@ -1,7 +1,5 @@
 # voltage-breadcrumbs
 
-> Easy to use breadcrumbs component
-
 [![NPM](https://img.shields.io/npm/v/voltage-breadcrumbs.svg)](https://www.npmjs.com/package/voltage-breadcrumbs) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 > Easy to use and customisable breadcrumb component for your react applications.
