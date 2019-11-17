@@ -21,7 +21,8 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
     "semantic-release": "semantic-release",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "netlify": "yarn build && yarn link && cd example && yarn install && yarn link voltage-breadcrumbs && yarn run build"
   },
   "dependencies": {},
   "peerDependencies": {},
