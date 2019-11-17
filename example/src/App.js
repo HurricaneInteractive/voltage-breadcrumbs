@@ -1,6 +1,7 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
 import Breadcrumbs from 'voltage-breadcrumbs'
+import Hero from './components/Hero'
 
 const links = [
   { link: "http://google.com", text: "Home" },
@@ -31,7 +32,8 @@ const customLinks = [
 export default class App extends Component {
   render () {
     return (
-      <Fragment>
+      <div className="page-layout">
+        <Hero />
         <div>
           <Breadcrumbs links={links} />
         </div>
@@ -39,12 +41,12 @@ export default class App extends Component {
           <Breadcrumbs links={moreLinks} />
         </div>
         <div style={{ marginTop: "20px" }}>
-          <Breadcrumbs links={customLinks} />
+          <Breadcrumbs links={customLinks} separator="-" />
         </div>
         <div style={{ marginTop: "20px" }}>
           <Breadcrumbs links={customLinks} separator={<Seperator />} />
         </div>
-      </Fragment>
+      </div>
     )
   }
 }
