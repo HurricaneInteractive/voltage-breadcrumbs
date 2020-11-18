@@ -50,7 +50,7 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-typescript2": "^0.25.2",
     "rollup-plugin-url": "^3.0.0",
-    "semantic-release": "^15.13.30",
+    "semantic-release": "^17.2.3",
     "typescript": "^3.7.2"
   },
   "files": [
